@@ -1,14 +1,12 @@
-// Java program to implement 
-// a Simple Registration Form 
-// using Java Swing 
+// GUI using Java Swing for the Perceptron
+// Part of ICS-121, 2020
   
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*; 
 
-class NewFrame 
-    extends JFrame 
-    implements ActionListener{
+class NewFrame extends JFrame implements ActionListener
+{
     // Components of the Interface
     private Container c;
     private JLabel title;
@@ -25,22 +23,13 @@ class NewFrame
     private JButton start;
     private JTextArea tout;
 
-    private String gates[] = { "AND", "OR"};
-
-    public int [][][] anddata = {{{0,0},{0}},
-                                            {{0,1},{0}},
-                                            {{1,0},{0}},
-                                            {{1,1},{1}}};
-    
-    public int [][][] ordata = {{{0,0},{0}},
-                                            {{0,1},{1}},
-                                            {{1,0},{1}},
-                                            {{1,1},{1}}};                        
+    private String gates[] = { "AND", "OR"};                        
 
     // constructor to initialize the components
     // with default values
     public NewFrame()
     {
+        // Main Window
         setTitle("Perceptron");
         setBounds(300, 90, 900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -49,12 +38,15 @@ class NewFrame
         c  = getContentPane();
         c.setLayout(null);
 
+        // Heading
         title = new JLabel("Perceptron"); 
         title.setFont(new Font("Arial", Font.PLAIN, 30)); 
         title.setSize(300, 30); 
         title.setLocation(300, 30); 
         c.add(title);
-
+        
+        // Learning Rate
+        // 0 < (double)learning rate < 1
         learning_rate = new JLabel("Learning Rate");
         learning_rate.setFont(new Font("Arial", Font.PLAIN, 20)); 
         learning_rate.setSize(150, 30); 
@@ -66,7 +58,9 @@ class NewFrame
         tlearning.setSize(50, 20);
         tlearning.setLocation(250, 100);
         c.add(tlearning);
-
+        
+        // Logic Gate Type
+        // AND or OR Gate
         gate = new JLabel("Logic Gate");
         gate.setFont(new Font("Arial", Font.PLAIN, 20)); 
         gate.setSize(150, 30); 
@@ -79,6 +73,8 @@ class NewFrame
         gate_type.setLocation(250, 150); 
         c.add(gate_type);
 
+        // Initial Weights for the perceptron
+        // 0 < (double)weigths < 1
         initial_weight_1 = new JLabel("Initial Weight 1");
         initial_weight_1.setFont(new Font("Arial", Font.PLAIN, 20)); 
         initial_weight_1.setSize(150, 30); 
@@ -103,6 +99,7 @@ class NewFrame
         tweight_2.setLocation(250, 250);
         c.add(tweight_2);
 
+        // Submit button
         submit = new JButton("Submit"); 
         submit.setFont(new Font("Arial", Font.PLAIN, 15)); 
         submit.setSize(100, 20); 
@@ -110,6 +107,7 @@ class NewFrame
         submit.addActionListener(this); 
         c.add(submit);
 
+        // Reset button
         reset = new JButton("Reset");
         reset.setFont(new Font("Arial", Font.PLAIN, 15));
         reset.setSize(100, 20); 
@@ -117,6 +115,7 @@ class NewFrame
         reset.addActionListener(this); 
         c.add(reset);
 
+        // Start button
         start = new JButton("START");
         start.setFont(new Font("Arial", Font.PLAIN, 15));
         start.setSize(100, 20); 
@@ -124,6 +123,7 @@ class NewFrame
         start.addActionListener(this); 
         c.add(start);
 
+        // Text Display Area
         tout = new JTextArea(); 
         tout.setFont(new Font("Arial", Font.PLAIN, 15)); 
         tout.setSize(300, 400); 
@@ -145,29 +145,15 @@ class NewFrame
             String data3 = "Initial Weight 2: " + tweight_2.getText() + "\n";
 
             // assigning the values to perceptron class objects
-            double w1 = Double.parseDouble(tweight_1.getText());
-            double w2 = Double.parseDouble(tweight_2.getText());
-            Perceptron.LEARNING_RATE = Double.parseDouble(tlearning.getText());
-            Perceptron.INTIAL_WEIGHTS = new double[] {w1, w2};
+            TruthTable.assigndata(tweight_1.getText(), tweight_2.getText(), tlearning.getText());
+            
             if ((String)gate_type.getSelectedItem() == "AND")
             {
-                for(int i = 0; i <4; i++){
-                    for (int j = 0; j<2; j++){
-                        for (int k = 0; k<Perceptron.targetdata[0][j].length; k++){
-                            Perceptron.targetdata[i][j][k] = anddata[i][j][k];
-                        }
-                    }
-                }
+                TruthTable.assignanddata();
             }
             else
             {
-                for(int i = 0; i <4; i++){
-                    for (int j = 0; j<2; j++){
-                        for (int k = 0; k<Perceptron.targetdata[0][j].length; k++){
-                            Perceptron.targetdata[i][j][k] = ordata[i][j][k];
-                        }
-                    }
-                }
+                TruthTable.assignordata();
             }
             
             tout.setText(data + data1 + data2 + data3);
@@ -182,9 +168,10 @@ class NewFrame
             tweight_2.setText(def);
             tout.setText(def);
         }
+        // Starts the Driver
         else if (e.getSource() == start)
         {
-            Driver.main(new String[0]);
+            ConsoleOutput.main(new String[0]);
         }
 
     }
