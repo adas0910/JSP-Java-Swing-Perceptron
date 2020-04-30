@@ -24,7 +24,7 @@ public class ConsoleOutput{
         }
     }
 
-    public void guiConsoleTest() {
+    public void guiConsole() {
         System.out.println("Normal java console output");
         // Output text area
         JTextArea textArea = new JTextArea();
@@ -43,10 +43,11 @@ public class ConsoleOutput{
         window.setVisible(true);
 
         // Calling main method from driver class
-       Driver.main(new String[0]);
+       Driver.runDriver();
     }
 
-    public static void main(String[] args) {
-        new ConsoleOutput().guiConsoleTest();
+    public static void guiOutput()
+    {
+        new ConsoleOutput().guiConsole();
     }
 }

@@ -171,7 +171,7 @@ class NewFrame extends JFrame implements ActionListener
         // Starts the Driver
         else if (e.getSource() == start)
         {
-            ConsoleOutput.main(new String[0]);
+            ConsoleOutput.guiOutput();
         }
 
     }

@@ -1,5 +1,6 @@
-public class Driver {
-    public static void main(String args[])
+public class Driver 
+{
+    public static void runDriver()
     {
         int[][][] data = Perceptron.targetdata;
         double[] weights = Perceptron.INTIAL_WEIGHTS;
