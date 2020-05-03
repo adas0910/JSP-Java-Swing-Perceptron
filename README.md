@@ -1,4 +1,4 @@
-# Perceptron 
+# JSP-Java-Swing-Perceptron 
 This project is a part of ICS-121, Java Programming, coursework's semester project at International Center for Applied Sciences(ICAS), Manipal Academy of Higher Education.
 
 An implementation of logic gates with single layered perceptron in Java.
@@ -15,5 +15,23 @@ An implementation of logic gates with single layered perceptron in Java.
 git clone https://github.com/adas0910/JSP-Java-Swing-Perceptron.git
 ```
 
-### 
+## Using JSP
+
+1. Clone JSP to a local directory.
+
+2. Compile the contents of src/main 
+```sh
+cd dir/JSP-Java-Swing-Program/src/main
+dir/JSP-Java-Swing-Program/src/main>javac Driver.java Perceptron.java Truthtable.java
+```
+
+3. Provide the path for src/main to include the class files and compile the contents of src/gui 
+```sh
+cd dir/JSP-Java-Swing-Program/src/gui
+dir/src/gui>javac -cp dir/JSP-Java-Swing-Program/src/main/ ConsoleOutput.java Mainform.java
+```
+4. Run Mainform to start the application
+```sh
+dir/JSP-Java-Swing-Program/src/gui>java -cp dir/JSP-Java-Swing-Program/src/main/; Mainform
+```
 
