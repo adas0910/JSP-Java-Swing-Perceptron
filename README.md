@@ -1,5 +1,4 @@
 # JSP-Java-Swing-Perceptron 
-This project is a part of ICS-121, Java Programming, coursework's semester project at International Center for Applied Sciences(ICAS), Manipal Academy of Higher Education.
 
 An implementation of logic gates with single layered perceptron in Java.
 
