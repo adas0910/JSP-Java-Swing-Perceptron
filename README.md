@@ -44,6 +44,8 @@ dir/JSP-Java-Swing-Program/src/gui>java -cp dir/JSP-Java-Swing-Program/src/main/
 ![img](img/Untitled-2.png)
 
 
+### Used Technology
+*Swing
 ### Note
 This project is a part of ICS-121, Java Programming, coursework's semester project at International Center for Applied Sciences(ICAS), Manipal Academy of Higher Education. As per the project requirements we were mainly tasked with implementing event handling and other various concepts and building an application. 
 
